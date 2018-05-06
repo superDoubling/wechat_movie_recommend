@@ -1,0 +1,41 @@
+<view class="debug" bindtap="play" hidden="{{!debug}}">
+  <view>摇一摇调试数据</view>
+  <view>x: {{x}}</view>
+  <view>y: {{y}}</view>
+  <view>z: {{z}}</view>
+  <view>showFilm: {{showFilm}}</view>
+  <view>loaded: {{loaded}}</view>
+  <view>change test: {{test}}</view>
+</view>
+<view class='page'>
+  <block wx:if="{{showFilm}}">
+    <view class="film" >
+      <image src="{{film.picUrl}}" class="film-cover" data-mid="{{film.mid}}" bindtap="viewFilmDetail"></image>
+      <view class="film-intro">
+        <view class="film-title">{{film.name}}</view>
+        <view class="film-directors">导演：{{film.director}}</view>
+        <view class="film-person">演员：{{film.actor}} </view>
+        <view class="fd-intro-txt">豆瓣评分：
+          <block wx:if="{{film.score == 0}}">
+            暂无评分
+          </block>
+          <block wx:else>
+            {{film.score}}分
+          </block>
+        </view>
+        <view class="fd-intro-txt">上映年份：{{film.showTime}}</view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="welcome" style="background-image: url({{shakeWelcomeImg}})">
+
+      <view class='welcome-text'>摇一摇，发现好电影</view>
+    </view>
+  </block>
+  <import src="../../component/message/message.wxml" />
+  <template is="message" data="{{message: message}}" />
+  <!-- 摇一摇音效 -->
+  <audio src="{{shakeSoundUrl}}" id="shakeSound"></audio>
+  <audio src="{{shakeCompleteSoundUrl}}" id="shakeCompleteSound"></audio>
+</view>

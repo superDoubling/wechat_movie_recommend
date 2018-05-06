@@ -1,0 +1,75 @@
+@import "../../component/message/message.wxss";
+page,.page{
+  min-height: 100vh;
+
+}
+.debug {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 40rpx;
+    background-color: rgba(0, 0, 0, .6);
+    color: #0aff67;
+}
+
+#shakeSound, #shakeCompleteSound {
+    display: none;
+}
+
+.welcome {
+    width: 750rpx;
+     height: 100vh; 
+    background-color: #338954;
+    background-size: contain;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.welcome-text{
+  color: white;
+  font-size: 50rpx;
+  font-weight: bold;
+  position: absolute;
+  bottom: 160rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+}
+.film {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 40rpx 100rpx;
+    background-color: #eee;
+    color: #fff;
+    font-size: 32rpx;
+}
+
+.film-cover {
+    width: 500rpx;
+    height: 700rpx;
+    margin-top: 20rpx;
+    box-shadow: 0 20rpx 40rpx rgba(0, 0, 0, .4);
+}
+
+.film-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* height: 300rpx; */
+    color: #666;
+    line-height: 60rpx;
+    padding:  20rpx;
+}
+
+
+.film-title {
+    margin: 30rpx auto;
+    font-size: 50rpx;
+    text-align: center;
+    color: #333;
+}

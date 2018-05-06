@@ -1,0 +1,24 @@
+<view class="weapp-about">
+    <view class="weapp-name">电影推荐</view>
+    <view class="webapp-intro">
+        <view class="webapp-intro-item">
+            <view class="webapp-intro-title">后端支持</view>
+            <view class="webapp-intro-content">豆瓣电影：https://movie.douban.com/</view>
+            <view class="webapp-intro-content">java爬虫：pachong</view>
+            <view class="webapp-intro-content">java web项目：movie_recommend</view>
+            <view class="webapp-intro-content">百度地图API：http://lbsyun.baidu.com/</view>
+        </view>
+        <view class="webapp-intro-item">
+            <view class="webapp-intro-title">技术参考</view>
+            <view class="webapp-intro-content">https://github.com/yesifeng/</view>
+        </view>
+        <view class="webapp-intro-item">
+            <view class="webapp-intro-title">开发者</view>
+            <view class="webapp-intro-content">张奕航、 严媛媛(前端支持)</view>
+        </view>
+         <view class="webapp-intro-item">
+            <view class="webapp-intro-title">指导老师</view>
+            <view class="webapp-intro-content">苏雅茹</view>
+        </view>
+    </view>
+</view>

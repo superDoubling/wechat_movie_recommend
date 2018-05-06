@@ -1,0 +1,45 @@
+<import src="../../component/filmList/filmList.wxml" />
+<import src="../../component/message/message.wxml" />
+
+<view wx:if="{{isOld < 2 && pageNum == 1}}">
+  <view class='search-keyword-title'>1、请选择您感兴趣的电影类型(2-5项)</view>
+  <view class='movie-choose'>
+    <view wx:for="{{allTag}}" wx:for-item="allTagItem" wx:key="allTagItem" class="search-keyword-item {{toggleData[index] == true ? 'act':'nor'}}" data-keyword="{{allTagItem}}" data-id="{{index}}" bindtap="chooseByType">{{allTagItem}}</view>
+    <view class="search-keyword-item btn-confirm {{btnDisabled==true ?'act':'nor'}}" bindtap='btnConfirm'>确定</view>
+  </view>
+
+</view>
+<view wx:if="{{isOld == 1 && pageNum == 2}}">
+  <view class='search-keyword-title'>2、请根据实际对以下电影进行评价，这将关乎之后为您推荐的电影，请认真对待喔~</view>
+  <view wx:if="{{showLoading}}">
+    <view class="loading">玩命加载中…</view>
+  </view>
+  <view class='movie-llist film' wx:else>
+    <view data-mid="{{item.mid}}" wx:for="{{movieList}}" class="film-item">
+      <image src="{{item.picUrl}}" class="film-cover-img" data-mid="{{item.mid}}" bindtap='viewFilmDetail'></image>
+      <view class="file-intro">
+        <view class="film-title">{{item.name}}</view>
+      </view>
+      <view class='film-choose'>
+        <view class="choose-list {{resultList[index] == 1 ? 'act':'nor'}}" data-type="weixiao" data-id="{{index}}" data-mid="{{item.mid}}" bindtap="changeColor">
+          <i class="iconfont icon-biaoqing-weixiao"></i>
+          <span>喜欢</span>
+        </view>
+        <view class="choose-list {{resultList[index] == 0 ? 'act':'nor'}}" data-type="dai" data-id="{{index}}" data-mid="{{item.mid}}" bindtap="changeColor">
+          <i class="iconfont icon-biaoqing-dai"></i>
+          <span>不清楚</span>
+        </view>
+        <view class="choose-list {{resultList[index] == -1 ? 'act':'nor'}}" data-type="nanguo" data-id="{{index}}" data-mid="{{item.mid}}" bindtap="changeColor">
+          <i class="iconfont icon-biaoqing-nanguo"></i>
+          <span>不喜欢</span>
+        </view>
+      </view>
+    </view>
+    <view class="search-keyword-item btn-confirm {{btnFlag==true ?'act':'nor'}}" bindtap='btnConfirm2'>确定</view>
+  </view>
+
+</view>
+<view wx:if="{{isOld == 2}}">
+  <template is="filmList" data="{{films: films, hasMore: hasMore, showLoading: showLoading}}" />
+  <template is="message" data="{{message: message}}" />
+</view>

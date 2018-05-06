@@ -1,0 +1,58 @@
+@import "../../component/filmList/filmList.wxss";
+@import "../../comm/style/iconfont.wxss";
+@import "../../component/message/message.wxss";
+@import "../search/search.wxss";
+
+.search-keyword-title {
+  font-size: 35rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.search-keyword-item {
+  padding: 10rpx 40rpx;
+  margin: 0 20rpx 20rpx 0;
+}
+
+.search-keyword-item.act, .btn-confirm.act {
+  background-color: #47a86c;
+  color: white;
+}
+
+.movie-choose {
+  padding: 40rpx;
+}
+
+.btn-confirm {
+  margin-top: 60rpx;
+  height: 50rpx;
+  font-size: 40rpx;
+  display: block;
+  width: 89%;
+  text-align: center;
+}
+
+.film-choose {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 60rpx;
+  font-size: 20rpx;
+}
+
+.film-choose span, .film-choose i {
+  /* display: inline-block; */
+  float: left;
+  vertical-align: center;
+  margin: 0 5rpx;
+}
+
+.choose-list, .film-choose span, .film-choose i {
+  line-height: 50rpx;
+  height: 50rpx;
+  color: #ccc;
+}
+
+.choose-list.act span,.choose-list.act .iconfont{
+  color: #357E51;
+}

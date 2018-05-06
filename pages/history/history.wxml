@@ -1,0 +1,34 @@
+<import src="../../component/nullTip/nullTip.wxml" />
+<view class="tab-content">
+ <block wx:if="{{showLoading}}">
+    <view class="loading">玩命加载中…</view>
+</block>
+  <block wx:if="{{film_history.length == 0 && !showLoading}}">
+    <template is="nullTip" data="{{nullTip: nullTip}}" />
+  </block>
+  <block wx:else>
+    <block wx:for="{{film_history}}" wx:for-item="filmHistoryFilmItem" wx:for-index="filmHistoryIndex" wx:key="filmHistory">
+      <view class="history-film-item" data-mid="{{filmHistoryFilmItem.mid}}" bindtap="viewFilmDetail">
+        <view class="history-film-time">{{filmHistoryFilmItem.createTime}}</view>
+        <view class="history-film-intro">
+          <image class="history-film-cover" src="{{filmHistoryFilmItem.picUrl}}"></image>
+          <view class="history-film-info">
+            <view class="history-film-txt history-film-title">{{filmHistoryFilmItem.name}}</view>
+            <view class="history-film-txt">导演：{{filmHistoryFilmItem.director}}</view>
+            <view class="history-film-txt">演员：{{filmHistoryFilmItem.actor}}
+            </view>
+            <view class="history-film-txt">豆瓣评分：
+              <block wx:if="{{filmHistoryFilmItem.score == 0}}">
+                暂无评分
+              </block>
+              <block wx:else>
+                {{filmHistoryFilmItem.score}}分
+              </block>
+            </view>
+            <view class="history-film-txt">上映年份：{{filmHistoryFilmItem.showTime}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+</view>

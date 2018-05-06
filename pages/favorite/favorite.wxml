@@ -1,0 +1,32 @@
+<import src="../../component/nullTip/nullTip.wxml" />
+
+<view class="tab-content-item" >
+ <block wx:if="{{showLoading}}">
+    <view class="loading">玩命加载中…</view>
+</block>
+  <block wx:if="{{film_favorite.length == 0 && !showLoading}}">
+    <template is="nullTip" data="{{nullTip: nullTip}}" />
+  </block>
+  <block wx:else>
+    <block wx:for="{{film_favorite}}" wx:for-item="filmFavoriteItem" wx:for-index="filmFavoriteIndex" wx:key="filmFavorite">
+      <view class="favorite-film-item" data-mid="{{filmFavoriteItem.mid}}" bindtap="viewFilmDetail">
+        <image class="favorite-film-cover" src="{{filmFavoriteItem.picUrl}}"></image>
+        <view class="favorite-film-info">
+          <view class="favorite-film-txt favorite-film-title">{{filmFavoriteItem.name}}</view>
+          <view class="favorite-film-txt">导演：{{filmFavoriteItem.director}}</view>
+          <view class="favorite-film-txt">演员：{{filmFavoriteItem.actor}}
+          </view>
+          <view class="favorite-film-txt">豆瓣评分：
+            <block wx:if="{{filmFavoriteItem.score == 0}}">
+              暂无评分
+            </block>
+            <block wx:else>
+              {{filmFavoriteItem.score}}分
+            </block>
+          </view>
+          <view class="favorite-film-txt">上映年份：{{filmFavoriteItem.showTime}}</view>
+        </view>
+      </view>
+    </block>
+  </block>
+</view>
