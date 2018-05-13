@@ -2,6 +2,7 @@
     <view class="user-info" style="background-image: url({{skin}})">
         <view class="user-skin" bindtap="viewSkin"></view>
         <image src="{{userInfo.avatarUrl}}" class="user-avatar"></image>
+        
         <view class="user-nickname">
             {{userInfo.nickName}}
             <block wx:if="{{userInfo.gender == 1}}">

@@ -1,6 +1,6 @@
 <template name="filmList">
 <block wx:if="{{showLoading}}">
-    <view class="loading">玩命加载中…</view>
+    <view class="loading">{{msg == '' ? '玩命加载中…' : msg}}</view>
 </block>
 <block wx:else>
     <view class="film">

@@ -3,14 +3,15 @@ App({
   globalData: {
     userInfo: null
   },
-  onLaunch: function() {
+  onLaunch: function () {
     // 获取用户信息
     this.getUserInfo()
     //初始化缓存
     this.initStorage()
   },
-  getUserInfo:function(cb){
-    var that = this
+  getUserInfo: function (cb) {
+    console.log("获取用户信息");
+    var that = this;
     wx.login({
       success: function () {
         wx.getUserInfo({
@@ -23,13 +24,24 @@ App({
             })
             that.globalData.userInfo = res.userInfo
             typeof cb == "function" && cb(that.globalData.userInfo)
+            console.log("获取成功");
+          }, fail(res) {
+            console.log("获取失败", res);
+            wx.navigateTo({
+              url: '../login/login',
+            })
           }
         })
-        
+        console.log("登录成功");
+      },
+      fail: function (res){
+        console.log(res);
+        console.log("登录失败", res);
       }
     })
+    
   },
-  getCity: function(cb) {
+  getCity: function (cb) {
     var that = this
     wx.getLocation({
       type: 'gcj02',
@@ -44,11 +56,11 @@ App({
             pois: '1'
           },
           method: 'GET',
-          success: function(res){
-            config.city = res.data.result.addressComponent.city.slice(0,-1)
-            typeof cb == "function" && cb(res.data.result.addressComponent.city.slice(0,-1))
+          success: function (res) {
+            config.city = res.data.result.addressComponent.city.slice(0, -1)
+            typeof cb == "function" && cb(res.data.result.addressComponent.city.slice(0, -1))
           },
-          fail: function(res) {
+          fail: function (res) {
             // 重新定位
             that.getCity();
           }
@@ -56,9 +68,9 @@ App({
       }
     })
   },
-  initStorage: function() {
+  initStorage: function () {
     wx.getStorageInfo({
-      success: function(res) {
+      success: function (res) {
         // 判断电影收藏是否存在，没有则创建
         if (!('film_favorite' in res.keys)) {
           wx.setStorage({
@@ -98,7 +110,7 @@ App({
           company: '',
           school: '',
           tel: '',
-          email:'',
+          email: '',
           intro: ''
         }
         // 判断个人信息是否存在，没有则创建

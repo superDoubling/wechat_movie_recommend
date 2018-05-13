@@ -1,0 +1,11 @@
+/* pages/login/login.wxss */
+.page{
+  margin: 30rpx;
+}
+.login-tips{
+  text-align: center;
+  line-height: 50rpx;
+  color: #ccc;
+  font-size: 30rpx;
+  margin-bottom: 50rpx;
+}

@@ -35,10 +35,11 @@ view {
 
 .webapp-intro-title {
     margin-bottom: 10rpx;
-    font-size: 32rpx;
+    font-size: 36rpx;
     color: #666;
 }
 
 .webapp-intro-content {
     color: #ccc;
+    font-size: 32rpx;
 }

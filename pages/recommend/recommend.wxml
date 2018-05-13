@@ -40,6 +40,7 @@
 
 </view>
 <view wx:if="{{isOld == 2}}">
-  <template is="filmList" data="{{films: films, hasMore: hasMore, showLoading: showLoading}}" />
+  <view class='search-keyword-title'>推荐以下电影，希望您会喜欢~</view>
+  <template is="filmList" data="{{films: films, hasMore: hasMore, showLoading: showLoading, msg: '计算结果中~'}}" />
   <template is="message" data="{{message: message}}" />
 </view>

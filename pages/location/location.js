@@ -83,5 +83,21 @@ Page({
   },
   refreshLocation: function(){
     this.getLocation()
-  }
+  },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+    }
+    return {
+      title: '位置分享',
+      path: '/pages/location/location',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        console.log('fail');
+        // 转发失败
+      }
+    }
+  },
 })

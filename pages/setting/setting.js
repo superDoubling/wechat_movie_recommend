@@ -31,7 +31,7 @@ Page({
   clearStorage: function() {
     wx.showModal({
       title: '确认要清除',
-      content: '将删除收藏和浏览记录，并重置兴趣推荐',
+      content: '将删除收藏和浏览记录，并重置兴趣类型和评分',
       success: function(res) {
         if (res.confirm) {
           wx.request({

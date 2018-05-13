@@ -7,27 +7,36 @@ Page({
     showLoading: true,
     showContent: false,
     isFilmFavorite: false,
-    scoreNum: 0
+    scoreNum: 0,
+    shareMid: 0
   },
   onLoad: function (options) {
+    console.log("进入详情页");
     var that = this
-    var mid = options.mid
-    wx.request({
-      url: config.apiList.getIsFavorite,
-      data: {
-        uname: getApp().globalData.userInfo.nickName,
-        mid: mid
-      },
-      success: function (res) {
-        that.setData({
-          isFilmFavorite: res.data.isFavorite,
-          scoreNum: res.data.userScore
-        });
-      }
-    })
-    douban.fetchFilmDetail.call(that, config.apiList.filmDetail, mid)
+    var mid = options.mid;
+    that.data.shareMid = options.mid;
+    
   },
-
+  onShow(){
+    var that = this;
+    let isLogin = that.checkLogin()
+    if (isLogin) {
+      wx.request({
+        url: config.apiList.getIsFavorite,
+        data: {
+          uname: getApp().globalData.userInfo.nickName,
+          mid: that.data.shareMid
+        },
+        success: function (res) {
+          that.setData({
+            isFilmFavorite: res.data.isFavorite,
+            scoreNum: res.data.userScore
+          });
+        }
+      })
+      douban.fetchFilmDetail.call(that, config.apiList.filmDetail, that.data.shareMid)
+    }
+  },
   viewPersonDetail: function (e) {
     var data = e.currentTarget.dataset;
     wx.redirectTo({
@@ -100,5 +109,31 @@ Page({
         });
       }
     })
+  },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+    }
+    return {
+      title: '电影分享',
+      path: '/pages/filmDetail/filmDetail?mid=' + this.data.shareMid,
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        console.log('fail');
+        // 转发失败
+      }
+    }
+  },
+  checkLogin(){
+    if (getApp().globalData.userInfo){
+      return true;
+    }else{
+      wx.navigateTo({
+        url: '../login/login',
+      })
+      return false;
+    }
   }
 })

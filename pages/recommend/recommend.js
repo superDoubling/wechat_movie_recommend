@@ -31,32 +31,46 @@ Page({
       success: function (res) {
         that.setData({
           isOld: res.data.isOld,
+          showLoading: true
         });
+        if (that.data.isOld == 2) {
+          wx.request({
+            url: config.apiList.recommendToIsOld,
+            data: {
+              uname: getApp().globalData.userInfo.nickName
+            },
+            success: function (res) {
+              that.setData({
+                films: res.data.subjects,
+                showLoading: false,
+                hasMore: false
+              });
+            }
+          })
+        } else {
+          for (var i = 0; i < config.allTag.length; i++) {
+            that.data.toggleData[i] = false; //添加toggle 属性 
+          }
+          console.log(that.data.toggleData);
+        }
       }
     })
-    if (that.data.isOld == 2) {
-      douban.fetchFilms.call(that, config.apiList.getRecommendList, that.data.start)
-    } else {
-      for (var i = 0; i < config.allTag.length; i++) {
-        that.data.toggleData[i] = false; //添加toggle 属性 
-      }
-      console.log(that.data.toggleData);
-    }
+    
 
   },
-  onPullDownRefresh: function () {
-    if (that.data.isOld) {
-      var that = this
-      that.setData({
-        films: [],
-        hasMore: true,
-        showLoading: true,
-        start: 0
-      })
-      douban.fetchFilms.call(that, config.apiList.coming, that.data.start)
-    }
+  // onPullDownRefresh: function () {
+  //   if (that.data.isOld) {
+  //     var that = this
+  //     that.setData({
+  //       films: [],
+  //       hasMore: true,
+  //       showLoading: true,
+  //       start: 0
+  //     })
+  //     douban.fetchFilms.call(that, config.apiList.coming, that.data.start)
+  //   }
 
-  },
+  // },
   // onReachBottom: function () {
   //   var that = this
   //   if (!that.data.showLoading) {
@@ -228,6 +242,10 @@ Page({
   btnConfirm2: function () {
     var that = this;
     if(that.data.btnFlag){
+      that.setData({
+        showLoading: true,
+        isOld: 2
+      });
       wx.request({
         url: config.apiList.getRecommendList,
         data: {
@@ -237,10 +255,11 @@ Page({
           uname: getApp().globalData.userInfo.nickName
         },
         success: function (res) {
-          console.log("success");
           that.setData({
             films: res.data.subjects,
-            isOld: res.data.isOld
+            isOld: res.data.isOld,
+            showLoading: false,
+            hasMore: false
           });
         }
       })
@@ -250,8 +269,14 @@ Page({
         duration: 1000,
         icon: 'none'
       })
-    }
-    
+    }    
+  },
 
+  viewFilmByType: function (e) {
+    var data = e.currentTarget.dataset
+    var keyword = data.type
+    wx.navigateTo({
+      url: '../searchResult/searchResult?url=' + encodeURIComponent(config.apiList.search.byType) + '&keyword=' + keyword
+    })
   },
 })

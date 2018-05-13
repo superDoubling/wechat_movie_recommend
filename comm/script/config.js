@@ -11,7 +11,7 @@ skinList: “我的”页面背景列表
 shakeSound: 摇一摇音效地址（带url表示远程地址）
 shakeWelcomeImg: 摇一摇欢迎图片
 */
-var url = 'http://192.168.1.103:8081/movie_recommend'
+var url = 'http://192.168.3.68:8081/movie_recommend'
 module.exports = {
   city: '福州',
   count: 20,
@@ -29,6 +29,7 @@ module.exports = {
     getTestMovieList: url + '/movie/getTestMovieListFast.do',
     filmDetail: url + '/movie/getMovieDetailsByMid.do',
     getRecommendList: url + '/movie/getRecommendList.do',
+    recommendToIsOld: url + '/movie/recommendToIsOld.do',
     getIsFavorite: url + '/movie/getIsFavorite.do',
     deleteFromStore: url + '/movie/deleteFromStore.do',
     addToStore: url + '/movie/addToStore.do',
@@ -54,10 +55,10 @@ module.exports = {
     { type: 'film', mid: '3445906', imgUrl: url + '/images/banner_5.webp' }
   ],
   skinList: [
-    { title: '公路', imgUrl: url + '/images/user_bg_1.jpg' },
-    { title: '黑夜森林', imgUrl: url + '/images/user_bg_2.jpg' },
-    { title: '鱼与水', imgUrl: url + '/images/user_bg_3.jpg' },
-    { title: '山之剪影', imgUrl: url + '/images/user_bg_4.jpg' },
+    { title: '桥', imgUrl: url + '/images/user_bg_1.jpg' },
+    { title: '赛车', imgUrl: url + '/images/user_bg_2.jpg' },
+    { title: '风景', imgUrl: url + '/images/user_bg_3.jpg' },
+    { title: '豆芽蛙', imgUrl: url + '/images/user_bg_4.jpg' },
     { title: '火山', imgUrl: url + '/images/user_bg_5.jpg' },
     { title: '科技', imgUrl: url + '/images/user_bg_6.jpg' },
     { title: '沙漠', imgUrl: url + '/images/user_bg_7.jpg' },
@@ -65,7 +66,8 @@ module.exports = {
     { title: '早餐', imgUrl: url + '/images/user_bg_9.jpg' },
     { title: '英伦汽车', imgUrl: url + '/images/user_bg_10.jpg' },
     { title: '草原', imgUrl: url + '/images/user_bg_11.jpg' },
-    { title: '城市', imgUrl: url + '/images/user_bg_12.jpg' }
+    { title: '城市', imgUrl: url + '/images/user_bg_12.jpg' },
+    { title: '狗狗', imgUrl: url + '/images/user_bg_13.jpg' }
   ],
   shakeSound: {
     startUrl: url + '/sound/shake.wav',

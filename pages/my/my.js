@@ -56,5 +56,6 @@ Page({
     wx.navigateTo({
       url: "../skin/skin"
     })
-  }
+  },
+ 
 })

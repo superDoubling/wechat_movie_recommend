@@ -4,7 +4,7 @@
 <template is="message" data="{{message: message}}"/>   -->
 
 
-<scroll-view  scroll-y="true" scroll-top="{{scrollTop}}" bindscroll="scroll" bindscrolltolower="onReachBottom" bindscrolltoupper="onPullDownRefresh" upper-threshold="-10" style="position: absolute; left: 0; top:0; bottom: 0; right: 0;">
+<scroll-view  scroll-y="true" scroll-top="{{scrollTop}}" bindscroll="scroll" bindscrolltolower="onReachBottom" bindscrolltoupper="onPullDownRefresh" upper-threshold="-10" style="position: absolute; left: 0; top:0; bottom: 0; right: 0;" scroll-with-animation='true'>
 
   <import src="../../component/filmList/filmList.wxml" />
   <template is="filmList" data="{{films: films, hasMore: hasMore, showLoading: showLoading}}" />

@@ -1,0 +1,5 @@
+<!--pages/login/login.wxml-->
+<view class='page'>
+    <view class='login-tips'>本页面只在第一次征求授权信息时出现，统一授权后将不再弹出</view>
+    <button class='login-btn' open-type ="getUserInfo" bindgetuserinfo='getuserinfo'>微信授权登录</button>
+</view>
