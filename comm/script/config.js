@@ -11,7 +11,7 @@ skinList: “我的”页面背景列表
 shakeSound: 摇一摇音效地址（带url表示远程地址）
 shakeWelcomeImg: 摇一摇欢迎图片
 */
-var url = 'http://192.168.3.68:8081/movie_recommend'
+var url = 'http://www.rwmovie.xyz:8081/movie_recommend'
 module.exports = {
   city: '福州',
   count: 20,
@@ -19,7 +19,6 @@ module.exports = {
   apiList: {
     userLogin: url + '/movie/userLogin.do',
     popular: url + '/movie/loadPopularList.do',
-    // coming: 'https://api.douban.com/v2/movie/coming_soon',
     top: url + '/movie/loadTopList.do',
     search: {
       byKeyword: url + '/movie/loadMovieListByKeyword.do',
@@ -41,7 +40,6 @@ module.exports = {
     getUserInfo: url + '/movie/getUserInfo.do',
     addToFeedback: url + '/movie/addToFeedback.do',
     getRandomMovie: url + '/movie/getRandomMovie.do',
-    // personDetail: 'https://api.douban.com/v2/movie/celebrity/',
     baiduMap: 'https://api.map.baidu.com/geocoder/v2/'
   },
   hotKeyword: ['黑豹', '小萝莉的猴神大叔', '红海行动', '比得兔', '唐人街探案2', '水形物语', '环太平洋：雷霆再起', '捉妖记2', '古墓丽影：源起之战', '战狼2', '萌犬好声音'],

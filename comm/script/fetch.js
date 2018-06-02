@@ -87,40 +87,6 @@ function fetchFilmDetail(url, mid, cb) {
   })
 }
 
-// 获取人物详情
-function fetchPersonDetail(url, id, cb) {
-  var that = this;
-  message.hide.call(that)
-  wx.request({
-    url: url + id,
-    method: 'GET', 
-    header: {
-      "Content-Type": "application/json,application/json"
-    },
-    success: function(res){
-      that.setData({
-        personDetail: res.data,
-        showLoading: false,
-        showContent: true
-      })
-      wx.setNavigationBarTitle({
-          title: res.data.name
-      })
-      wx.stopPullDownRefresh()
-      typeof cb == 'function' && cb(res.data)
-    },
-    fail: function() {
-      that.setData({
-          showLoading: false
-      })
-      message.show.call(that,{
-        content: '网络开小差了',
-        icon: 'offline',
-        duration: 3000
-      })
-    }
-  })
-}
 
 // 搜索（关键词或者类型）
 function search(url, keyword, start, count, cb){
@@ -179,6 +145,5 @@ function search(url, keyword, start, count, cb){
 module.exports = {
   fetchFilms: fetchFilms,
   fetchFilmDetail: fetchFilmDetail,
-  fetchPersonDetail: fetchPersonDetail,
   search: search
 }

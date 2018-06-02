@@ -26,6 +26,13 @@ Page({
   },
   onShow: function () {
     var that = this
+    if (app.globalData.userInfo != null) {
+      that.setData({
+        userInfo: app.globalData.userInfo
+      })
+    } else {
+      app.getUserInfo()
+    }
     wx.getStorage({
       key: 'skin',
       success: function (res) {

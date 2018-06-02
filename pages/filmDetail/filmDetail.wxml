@@ -54,22 +54,6 @@
           {{filmDetail.summary}}
         </block>
       </view>
-
-      <!-- <view class="fd-bd-title">导演/演员</view>
-      <view class="fd-bd-person">
-        <view class="fd-bd-person-item" data-id="{{filmDetail.directors[0].id}}" bindtap="viewPersonDetail">
-          <image class="fd-bd-person-avatar" src="{{filmDetail.directors[0].avatars.medium}}"></image>
-          <view class="fd-bd-person-name">{{filmDetail.directors[0].name}}</view>
-          <view class="fd-bd-person-role">导演</view>
-        </view>
-        <block wx:for="{{filmDetail.casts}}" wx:for-item="filmDetailCastItem" wx:key="filmDetailCastItem">
-          <view class="fd-bd-person-item" data-id="{{filmDetailCastItem.id}}" bindtap="viewPersonDetail">
-            <image class="fd-bd-person-avatar" src="{{filmDetailCastItem.avatars.medium}}"></image>
-            <view class="fd-bd-person-name">{{filmDetailCastItem.name}}</view>
-            <view class="fd-bd-person-role">演员</view>
-          </view>
-        </block>
-      </view> -->
       <view class="fd-bd-title">标签</view>
       <view class="fd-bd-tag">
         <block wx:for="{{filmDetail.type}}" wx:for-item="filmDetailTypeItem" wx:key="filmDetailTypeKey">
